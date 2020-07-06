@@ -27,12 +27,16 @@ struct MissionView: View {
                         .frame(maxWidth: geomtry.size.width * 7.0)
                         .padding(.top)
                     
+                Text(self.mission.formattedLaunchDate)
+                    .padding()
+                    .font(.largeTitle)
+                    
                     Text(self.mission.description)
                         .padding()
                     
                     ForEach(self.astronauts, id: \.role) {
                         crewMember in
-                        NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)){
+                        NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, mission: self.mission)){
                             HStack {
                                 Image(crewMember.astronaut.id)
                                     .resizable()
